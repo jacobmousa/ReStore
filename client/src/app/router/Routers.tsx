@@ -7,7 +7,7 @@ import HomePage from "../../features/home/HomePage";
 import App from "../layout/App";
 import ServerError from "../errors/ServerErrors";
 import NotFound from "../errors/NotFound";
-import BasketPage from "../../features/basket/Basket";
+import BasketPage from "../../features/basket/BasketPage";
 import Checkoutpage from "../../features/checkout/CheckoutPage";
 
 export const router = createBrowserRouter([
