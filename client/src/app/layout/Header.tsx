@@ -3,6 +3,7 @@ import { AppBar, Badge, IconButton, List, ListItem, Switch, Toolbar, Typography 
 import { Box } from "@mui/system";
 import { Link, NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
+import SignInMenu from "./SignedInMenu";
 
 const midLinks = [
     { title: 'catalog', path: '/catalog' },
@@ -35,6 +36,7 @@ interface Props {
 export default function Header({ handleThemeChange, darkMode }: Props) {
 
     const {basket} = useAppSelector(state => state.basket)
+    const {user} = useAppSelector(state => state.account)
     const itemCount = basket?.items.reduce((sum,item) => sum + item.quantity,0);
 
     return (
@@ -70,7 +72,10 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
                             <ShoppingCart />
                         </Badge>
                     </IconButton>
-
+                    {user ? (
+                         <SignInMenu />
+                    ) :
+                    (
                     <List sx={{ display: 'flex' }}>
                         {rightLinks.map(({ title, path }) => (
                             <ListItem
@@ -83,6 +88,8 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
                             </ListItem>
                         ))}
                     </List>
+                    )}
+                    
                 </Box>
 
 
